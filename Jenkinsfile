@@ -48,7 +48,9 @@ pipeline {
         }
       stage ('Deploy') {
             steps {
-                sh 'sudo systemctl restart microblog'
+                sh '''#!/bin/bash
+                sudo systemctl restart microblog
+                '''
             }
         }
     }
