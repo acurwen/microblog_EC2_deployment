@@ -19,5 +19,5 @@ def test_explore(client):
         assert client
         response = client.get('/explore')
         print(response)
+        assert response.status_code == 302
 
-test_explore()
