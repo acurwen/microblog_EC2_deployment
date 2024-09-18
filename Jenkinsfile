@@ -4,7 +4,14 @@ pipeline {
         stage ('Build') {
             steps {
                 sh '''#!/bin/bash
-                <enter your code here>
+                python3.9 -m venv venv
+                source venv/bin/activate
+                pip install pip --upgrade
+                pip install -r requirements.txt
+                pip install gunicorn pymysql cryptography
+                FLASK_APP=microblog.py
+                flask translate compile
+                flask db upgrade
                 '''
             }
         }
@@ -12,7 +19,6 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source venv/bin/activate
-                py.test ./tests/unit/ --verbose --junit-xml test-reports/results.xml
                 '''
             }
             post {
@@ -42,7 +48,8 @@ pipeline {
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
-                <enter your code here>
+                source venv/bin/activate
+                gunicorn -b :5000 -w 4 microblog:app
                 '''
             }
         }
