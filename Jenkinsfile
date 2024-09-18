@@ -19,6 +19,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source venv/bin/activate
+                py.test ./tests/unit/ --verbose --junit-xml test-reports/results.xml
                 '''
             }
             post {
