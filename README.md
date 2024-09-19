@@ -22,7 +22,7 @@ Security groups:
 
 
 ## 3. Updated Authorized Keys
-Next, per the Canvas instructions, I appended the contents of the [public_key.txt](https://canvas.instructure.com/courses/9516210/files/269802266?wrap=1) to my authorized_keys file within my Jenkins instance. To do so, I cd'd into root (`cd /`), cd'd into the .ssh directory (`cd .ssh`) and nano'd into the authorized_keys file.
+Next, per the Canvas instructions, I appended the contents of the [public_key.txt](https://canvas.instructure.com/courses/9516210/files/269802266?wrap=1) to my authorized_keys file within my Jenkins instance. To do so, I cd'd into root (`cd /`), cd'd into the .ssh directory (`cd .ssh`) and nano'd into the authorized_keys file. Later on I added this to my Monitoring instance as well.
 
 
 ## 4. Installing Jenkins, Python3.9, Python3.9-venv, Python3-pip and Nginx:
@@ -426,11 +426,9 @@ I was under the impression we had to create a custom VPC alongside with NACLs, p
 Other errors: Forgot to correctly name my pipeline "workload_3".
 
 # Optimization:
-**What are the advantages of provisioning ones own resources over using a managed service like Elastic Beanstalk?**
 Provisioning your own resource allows you more customizing capabilities that best fit whatever you are doing in your infrastrucure (ie. deploying an application). Also, your infrastrucure's contents are not at risk in the case that a managed service like Elastic Beanstalk fails. 
 
-**Could the infrastructure created in this workload be considered that of a "good system"? Why or why not? How would you optimize this infrastructure to address these issues?**
 Using a t3.medium at first would have avoided issues related to insufficent memory resources used to carry out the Jenkinsbuild. 
 
 # Conclusion:
-This was a good experience provisioning my own infrastructure for the microblgo application. 
+This was a good experience provisioning my own infrastructure for the microblog application. 
